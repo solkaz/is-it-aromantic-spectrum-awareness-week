@@ -1,16 +1,32 @@
 /**
- * Check if a date occurs within that year's Aromantic Spectrum Awareness Week (ASAW).
- *
- * The week occurs after that year's Valentine's Day (Feb. 14), starting on the next Sunday.
- *
- * @param date the date to check
- * @returns whether the current date is within that year's Aromantic Spectrum Awareness Week
+ * Get the date range of when ASAW is supposed to happen for a given year
+ * Start is inclusive, end is exclusive
  */
-export function isItAroWeek(date: Date): boolean {
-	const year = date.getFullYear();
+export function getAsawDateRange(year: number): [Date, Date] {
 	const valentinesDay = new Date(year, 1, 14);
 	const startOfAsaw = valentinesDay.getDate() + 1 + (6 - valentinesDay.getDay());
 	const endOfAsaw = startOfAsaw + 7;
+	return [new Date(year, 1, startOfAsaw), new Date(year, 1, endOfAsaw)];
+}
 
-	return new Date(year, 1, startOfAsaw) <= date && new Date(year, 1, endOfAsaw) > date;
+export type State = {
+	currentYear: number;
+	asawDateRange: [Date, Date];
+	isAsawUpcomingThisYear: boolean;
+	isItAsaw: boolean;
+	didAsawOccurThisYear: boolean;
+};
+
+export function getState(today: Date): State {
+	const asawDateRange = getAsawDateRange(today.getFullYear());
+
+	const isAsawUpcomingThisYear = today < asawDateRange[0];
+	const didAsawOccurThisYear = today >= asawDateRange[1];
+	return {
+		currentYear: today.getFullYear(),
+		asawDateRange,
+		isAsawUpcomingThisYear,
+		didAsawOccurThisYear,
+		isItAsaw: !isAsawUpcomingThisYear && !didAsawOccurThisYear
+	};
 }
