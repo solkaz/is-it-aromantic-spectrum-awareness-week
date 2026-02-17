@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
 	import { isItAroWeek } from '../date';
 
-	let isAroWeek = $state(isItAroWeek(new Date()));
+	const today = $state(new Date());
+	const isAroWeek = $derived(isItAroWeek(today));
 </script>
 
-<h1>Is it Aromantic Spectrum Awareness Week</h1>
-{isAroWeek ? 'Yes!' : 'No...'}
+<main id="main-content">
+	<h1>{isAroWeek ? "Yes, it's Aromantic Spectrum Awareness Week! 💚🤍🩶🖤" : 'No...'}</h1>
+</main>
