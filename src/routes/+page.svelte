@@ -1,4 +1,5 @@
 <script lang="ts">
+	import aroFlag from '$lib/assets/aromantic-pride-flag.svg';
 	import { getAsawDateRange, getState } from '../date';
 	const dateFormat = new Intl.DateTimeFormat('en-us', {
 		month: 'long',
@@ -29,6 +30,8 @@
 </script>
 
 <main id="main-content">
+	<img alt="The aromantic pride flag" src={aroFlag} />
+
 	<h1>{state.isItAsaw ? "Yes, it's Aromantic Spectrum Awareness Week! 💚🤍🩶🖤" : 'No...'}</h1>
 
 	<p>
@@ -99,6 +102,10 @@
 		flex-flow: column nowrap;
 		align-items: center;
 		justify-content: center;
+	}
+
+	img {
+		max-height: 400px;
 	}
 
 	@media screen and (width >= 800px) {
