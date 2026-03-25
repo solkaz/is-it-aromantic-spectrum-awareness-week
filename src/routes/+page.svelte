@@ -108,19 +108,6 @@
 		max-height: 400px;
 	}
 
-	@media screen and (width >= 800px) {
-		main {
-			width: 80%;
-			margin: 2rem auto;
-			padding: 2rem;
-			border: 1px solid black;
-			display: flex;
-			flex-flow: column nowrap;
-			align-items: center;
-			justify-content: center;
-		}
-	}
-
 	hr {
 		width: 50%;
 		opacity: 50%;
