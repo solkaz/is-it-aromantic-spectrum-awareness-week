@@ -11,6 +11,21 @@
 		day: 'numeric'
 	});
 	const state = $state(getState(new Date()));
+
+	const resourceLinks = [
+		{
+			label: 'ASAW website',
+			href: 'https://www.arospecweek.org/'
+		},
+		{
+			label: 'Aromantic-spectrum Union for Recognition, Education, and Advocacy (AUREA)',
+			href: 'https://www.aromanticism.org/'
+		},
+		{
+			label: 'r/aromantic',
+			href: 'https://www.reddit.com/r/aromantic'
+		}
+	];
 </script>
 
 <main id="main-content">
@@ -33,12 +48,28 @@
 			from {dateFormatWithYear.formatRange(...getAsawDateRange(state.currentYear + 1))}
 		</p>
 	{/if}
+
+	<hr />
+
+	<h2>Resources</h2>
+	<p>For more information about ASAW and aromanticism in general, check out these links:</p>
+	<ul>
+		{#each resourceLinks as link (link.href)}
+			<li>
+				<a href={link.href} rel="external noopener" target="_blank">
+					{link.label}
+				</a>
+			</li>
+		{/each}
+	</ul>
 </main>
 
 <footer>
 	<p>
 		Made with 💚🤍🩶🖤 by
-		<a href="https://github.com/solkaz" rel="_noopener" target="_blank" class="monospace">solkaz</a>
+		<a href="https://github.com/solkaz" rel="external _noopener" target="_blank" class="monospace"
+			>solkaz</a
+		>
 	</p>
 </footer>
 
@@ -64,6 +95,7 @@
 		max-height: 800px;
 		width: 80%;
 		margin: 2rem auto;
+		padding: 2rem;
 		display: flex;
 		flex-flow: column nowrap;
 		align-items: center;
@@ -83,6 +115,11 @@
 			align-items: center;
 			justify-content: center;
 		}
+	}
+
+	hr {
+		width: 50%;
+		opacity: 50%;
 	}
 
 	footer {
