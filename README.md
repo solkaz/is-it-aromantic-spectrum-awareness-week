@@ -2,6 +2,8 @@
 
 SvelteKit site to show if it's [Aromantic Spectrum Awareness Week (ASAW)](https://www.arospecweek.org/).
 
+[View the live website here](https://isitarospecweek.com)
+
 ## Developing
 
 - Install deps with `pnpm install`
