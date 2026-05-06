@@ -30,9 +30,17 @@
 </script>
 
 <main id="main-content">
+	<h1>Is it Aromantic Spectrum Awareness Week?</h1>
+
 	<img alt="The aromantic pride flag" src={aroFlag} />
 
-	<h1>{state.isItAsaw ? "Yes, it's Aromantic Spectrum Awareness Week! 💚🤍🩶🖤" : 'No...'}</h1>
+	<h2>
+		{#if state.isItAsaw}
+			Yes! 💚🤍🩶🖤
+		{:else}
+			Nope 😔
+		{/if}
+	</h2>
 
 	<p>
 		Aromantic Spectrum Awareness Week (ASAW) is a week meant to spread awareness about the aromantic
@@ -47,8 +55,8 @@
 		<p>ASAW will run this year from {dateFormat.formatRange(...state.asawDateRange)}</p>
 	{:else}
 		<p>
-			ASAW ran this year {dateFormat.formatRange(...state.asawDateRange)}. Next year it will run
-			from {dateFormatWithYear.formatRange(...getAsawDateRange(state.currentYear + 1))}
+			ASAW ran this year from {dateFormat.formatRange(...state.asawDateRange)}. Next year it will
+			run from {dateFormatWithYear.formatRange(...getAsawDateRange(state.currentYear + 1))}
 		</p>
 	{/if}
 
